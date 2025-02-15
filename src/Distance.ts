@@ -4,6 +4,8 @@ import { assertValidNumber } from './utils/Utils'
 export class Distance {
     private _value: number
     private _unit: DistanceUnit
+    private _originalValue?: string | undefined
+
     private readonly _conversionRates: Record<DistanceUnit, number> = {
         [DistanceUnit.METER]: 1,
         [DistanceUnit.FOOT]: 0.3048,
@@ -20,14 +22,16 @@ export class Distance {
         [DistanceUnit.UNKNOWN]: 3,
     }
 
-    constructor(value: number, unit: string) {
+    constructor(value: number, unit: string, originalValue?: string) {
         this._value = value
         this._unit = getDistanceUnit(unit)
+        this._originalValue = originalValue
     }
 
     public get value(): number {
         return this._value
     }
+
     public set value(value: number) {
         this._value = value
     }
@@ -35,8 +39,17 @@ export class Distance {
     public get unit(): DistanceUnit {
         return this._unit
     }
-    public set unit(value: DistanceUnit) {
+
+    private set unit(value: DistanceUnit) {
         this._unit = value
+    }
+
+    public get originalValue(): string | undefined {
+        return this._originalValue
+    }
+
+    private set originalValue(value: string | undefined) {
+        this._originalValue = value
     }
 
     convert(toUnit: DistanceUnit): Distance {
@@ -54,7 +67,10 @@ export class Distance {
         if (toUnit == this.unit) {
             return new Distance(this.value, this.unit)
         }
-        return new Distance(this.convertTo(toUnit), toUnit)
+
+        // NOTE: is this behavior wanted?
+        // It would make sense to create a new originalValue based on the new values, or leave it empty.
+        return new Distance(this.convertTo(toUnit), toUnit, this.originalValue)
     }
 
     private convertTo(toUnit: DistanceUnit): number {
@@ -68,6 +84,6 @@ export class Distance {
     static fromJsonValue(value: string): Distance {
         const stringParts = value.split(';')
         assertValidNumber(stringParts[0])
-        return new Distance(Number(stringParts[0]), stringParts[1])
+        return new Distance(Number(stringParts[0]), stringParts[1], value)
     }
 }

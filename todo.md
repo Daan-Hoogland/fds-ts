@@ -1,0 +1,2 @@
+-   [ ] Fix Distance tests
+-   [ ] Add speed tests
