@@ -4,7 +4,7 @@ import { assertValidNumber } from './utils/Utils'
 export class Distance {
     private _value: number
     private _unit: DistanceUnit
-    private _originalValue?: string | undefined
+    private _originalValue?: string
 
     private readonly _conversionRates: Record<DistanceUnit, number> = {
         [DistanceUnit.METER]: 1,
