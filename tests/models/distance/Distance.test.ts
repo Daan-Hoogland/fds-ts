@@ -1,5 +1,5 @@
-import { Distance } from '../src/Distance'
-import { DistanceUnit } from '../src/EDistanceUnit'
+import { Distance } from '../../../src/models/distance/Distance'
+import { DistanceUnit } from '../../../src/models/distance/EDistanceUnit'
 
 const meterToMeter = { expected: 1 }
 const meterToFoot = { expected: 3.28084, numDigits: 2 }

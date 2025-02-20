@@ -1,5 +1,5 @@
 import { getHeadingUnit, HeadingUnit } from './EHeadingUnit'
-import { assertValidNumber } from './utils/Utils'
+import { assertValidNumber } from '../../utils/Utils'
 
 export class Heading {
     private _value: number

@@ -1,5 +1,5 @@
 import { getSpeedUnit, SpeedUnit } from './ESpeedUnit'
-import { assertValidNumber } from './utils/Utils'
+import { assertValidNumber } from '../../utils/Utils'
 
 export class Speed {
     private _value: number

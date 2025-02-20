@@ -1,4 +1,4 @@
-import { AltitudeUnit, getAltitudeUnit } from '../src/EAltitudeUnit'
+import { AltitudeUnit, getAltitudeUnit } from '../../../src/models/altitude/EAltitudeUnit'
 
 describe('Altitude enum', () => {
     it('should return the right enum value for the input string METER', () => {

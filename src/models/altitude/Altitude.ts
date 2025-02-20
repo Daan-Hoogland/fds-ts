@@ -1,5 +1,5 @@
 import { AltitudeUnit, getAltitudeUnit } from './EAltitudeUnit'
-import { assertValidNumber } from './utils/Utils'
+import { assertValidNumber } from '../../utils/Utils'
 
 export class Altitude {
     private _value: number

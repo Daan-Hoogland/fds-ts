@@ -1,4 +1,4 @@
-import { HeadingUnit, getHeadingUnit } from '../src/EHeadingUnit'
+import { HeadingUnit, getHeadingUnit } from '../../src/EHeadingUnit'
 
 describe('SpeedUnit enum', () => {
     it('should return the right enum value for the input string RADIAN', () => {

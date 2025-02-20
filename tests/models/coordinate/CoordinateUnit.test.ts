@@ -1,4 +1,4 @@
-import { CoordinateUnit, getCoordinateUnit } from '../src/ECoordinateUnit'
+import { CoordinateUnit, getCoordinateUnit } from '../../../src/models/coordinates/ECoordinateUnit'
 
 describe('CoordinateUnit enum', () => {
     it('should return the right enum value for the input string RD', () => {

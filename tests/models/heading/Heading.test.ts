@@ -1,5 +1,5 @@
-import { Heading } from '../src/Heading'
-import { HeadingUnit } from '../src/EHeadingUnit'
+import { Heading } from '../../../src/models/heading/Heading'
+import { HeadingUnit } from '../../../src/models/heading/EHeadingUnit'
 
 const degreeToDegree = { expected: 1 }
 const degreeToHeadingTrue = { expected: 1 }

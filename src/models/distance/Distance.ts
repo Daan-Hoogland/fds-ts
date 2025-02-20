@@ -1,5 +1,5 @@
 import { DistanceUnit, getDistanceUnit } from './EDistanceUnit'
-import { assertValidNumber } from './utils/Utils'
+import { assertValidNumber } from '../../utils/Utils'
 
 export class Distance {
     private _value: number

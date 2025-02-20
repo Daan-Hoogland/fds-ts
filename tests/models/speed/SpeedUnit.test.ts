@@ -1,4 +1,4 @@
-import { SpeedUnit, getSpeedUnit } from '../src/ESpeedUnit'
+import { SpeedUnit, getSpeedUnit } from '../../../src/models/speed/ESpeedUnit'
 
 describe('SpeedUnit enum', () => {
     it('should return the right enum value for the input string MH', () => {

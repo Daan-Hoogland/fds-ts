@@ -1,5 +1,5 @@
-import { Speed } from '../src/Speed'
-import { SpeedUnit } from '../src/ESpeedUnit'
+import { Speed } from '../../../src/models/speed/Speed'
+import { SpeedUnit } from '../../../src/models/speed/ESpeedUnit'
 
 const mhToMh = { expected: 1 }
 const mhToMs = { expected: 0.00027778, numDigits: 5 }
