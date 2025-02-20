@@ -7,9 +7,9 @@ export class Heading {
     private _originalValue?: string | undefined
 
     private readonly _conversionRates: Record<HeadingUnit, number> = {
-        [HeadingUnit.DEGREE]: 1, // Base unit
-        [HeadingUnit.HEADING_TRUE]: 1, // 1 degree = 1 heading_true
-        [HeadingUnit.RADIAN]: 180 / Math.PI, // 1 radian = 180 / π degrees
+        [HeadingUnit.DEGREE]: 1,
+        [HeadingUnit.HEADING_TRUE]: 1,
+        [HeadingUnit.RADIAN]: Math.PI / 180,
         [HeadingUnit.UNKNOWN]: 1,
     }
 
@@ -21,8 +21,8 @@ export class Heading {
     }
 
     constructor(value: number, unit: string, originalValue?: string) {
-        this._value = value
         this._unit = getHeadingUnit(unit)
+        this._value = this.normalizeValue(value, this.unit)
         this._originalValue = originalValue
     }
 
@@ -31,7 +31,7 @@ export class Heading {
     }
 
     public set value(value: number) {
-        this._value = value
+        this._value = this.normalizeValue(value, this.unit)
     }
 
     public get unit(): HeadingUnit {
@@ -55,8 +55,11 @@ export class Heading {
             return this
         }
 
-        this.value = this.convertTo(toUnit)
+        // save new value in variable to avoid issues with normalizeValue.
+        const newValue = this.convertTo(toUnit)
         this.unit = toUnit
+        this.value = newValue
+
         return this
     }
 
@@ -69,11 +72,33 @@ export class Heading {
     }
 
     private convertTo(toUnit: HeadingUnit): number {
-        const valueInBase = this.value * (1 / this._conversionRates[this.unit])
-        const convertedValue = valueInBase * this._conversionRates[toUnit]
+        let valueInBase: number
+        let convertedValue: number
+        if (this.unit === HeadingUnit.RADIAN) {
+            valueInBase = this.value * (180 / Math.PI)
+            convertedValue = valueInBase * this._conversionRates[toUnit]
+        } else if (toUnit === HeadingUnit.RADIAN) {
+            valueInBase = this.value * this._conversionRates[this.unit]
+            convertedValue = valueInBase * (Math.PI / 180)
+        } else {
+            valueInBase = this.value * this._conversionRates[this.unit]
+            convertedValue = valueInBase / this._conversionRates[toUnit]
+        }
         const precision = this._precisionMap[toUnit] ?? 2 // default of 2.
 
         return parseFloat(convertedValue.toFixed(precision))
+    }
+
+    private normalizeValue(value: number, unit: HeadingUnit): number {
+        switch (unit) {
+            case HeadingUnit.DEGREE:
+            case HeadingUnit.HEADING_TRUE:
+                return ((value % 360) + 360) % 360
+            case HeadingUnit.RADIAN:
+                return ((value % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI)
+            default:
+                throw new Error(`Unsupported unit: ${unit}`)
+        }
     }
 
     static fromJsonValue(value: string): Heading {
