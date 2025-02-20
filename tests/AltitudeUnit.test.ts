@@ -1,13 +1,13 @@
 import { AltitudeUnit, getAltitudeUnit } from '../src/EAltitudeUnit'
 
-describe('SpeedUnit enum', () => {
+describe('Altitude enum', () => {
     it('should return the right enum value for the input string METER', () => {
-        const radianString = 'METER'
-        expect(getAltitudeUnit(radianString)).toBe(AltitudeUnit.METER)
+        const meterString = 'METER'
+        expect(getAltitudeUnit(meterString)).toBe(AltitudeUnit.METER)
     })
     it('should return the right enum value for the input string FEET', () => {
-        const headingTrueString = 'FOOT'
-        expect(getAltitudeUnit(headingTrueString)).toBe(AltitudeUnit.FOOT)
+        const footString = 'FOOT'
+        expect(getAltitudeUnit(footString)).toBe(AltitudeUnit.FOOT)
     })
     it('should correctly return UNKNOWN when fed an invalid heading value', () => {
         const inputString = 'INVALID VALUE'
