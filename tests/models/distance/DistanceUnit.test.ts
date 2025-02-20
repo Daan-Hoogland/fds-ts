@@ -1,4 +1,4 @@
-import { DistanceUnit, getDistanceUnit } from '../../src/EDistanceUnit'
+import { DistanceUnit, getDistanceUnit } from '../../../src/models/distance/EDistanceUnit'
 
 describe('DistanceUnit enum', () => {
     it('should return the right enum value for the input value METER', () => {

@@ -1,5 +1,5 @@
-import { Altitude } from '../../src/Altitude'
-import { AltitudeUnit } from '../../src/EAltitudeUnit'
+import { Altitude } from '../../../src/models/altitude/Altitude'
+import { AltitudeUnit } from '../../../src/models/altitude/EAltitudeUnit'
 
 const meterToMeter = { expected: 1 }
 const meterToFoot = { expected: 3.28084, numDigits: 2 }
