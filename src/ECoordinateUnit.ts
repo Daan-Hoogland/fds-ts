@@ -9,6 +9,7 @@ export enum CoordinateUnit {
 }
 
 export const getCoordinateUnit = (unit: string) => {
+    unit = unit.toUpperCase()
     const disEnum = CoordinateUnit[unit as keyof typeof CoordinateUnit]
     return disEnum ? disEnum : CoordinateUnit.UNKNOWN
 }

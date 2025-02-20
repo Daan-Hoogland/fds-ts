@@ -9,6 +9,7 @@ export enum SpeedUnit {
 }
 
 export const getSpeedUnit = (unit: string) => {
+    unit = unit.toUpperCase()
     const disEnum = SpeedUnit[unit as keyof typeof SpeedUnit]
     return disEnum ? disEnum : SpeedUnit.UNKNOWN
 }

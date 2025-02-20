@@ -6,6 +6,7 @@ export enum HeadingUnit {
 }
 
 export const getHeadingUnit = (unit: string) => {
+    unit = unit.toUpperCase()
     const disEnum = HeadingUnit[unit as keyof typeof HeadingUnit]
     return disEnum ? disEnum : HeadingUnit.UNKNOWN
 }
