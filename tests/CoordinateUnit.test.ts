@@ -27,7 +27,7 @@ describe('CoordinateUnit enum', () => {
     })
     it('should correctly return UNKNOWN when fed an invalid heading value', () => {
         const inputString = 'INVALID VALUE'
-        const headingEnum = getCoordinateUnit(inputString)
-        expect(headingEnum).toBe(CoordinateUnit.UNKNOWN)
+        const coordinateEnum = getCoordinateUnit(inputString)
+        expect(coordinateEnum).toBe(CoordinateUnit.UNKNOWN)
     })
 })
