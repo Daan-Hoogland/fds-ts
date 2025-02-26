@@ -4,6 +4,7 @@ import { Distance } from '../distance/Distance'
 import { Heading } from '../heading/Heading'
 import { Speed } from '../speed/Speed'
 import { Time } from '../time/Time'
+import { Track } from '../track/Track'
 import { PlotJson } from './PlotJson'
 
 export class Plot {
@@ -14,6 +15,7 @@ export class Plot {
     private _distance: Distance
     private _time: Time
     private _originalValue?: PlotJson | undefined
+    private _track?: Track | undefined
 
     constructor(
         coordinates: Coordinate,
@@ -22,7 +24,8 @@ export class Plot {
         heading: Heading,
         distance: Distance,
         time: Time,
-        originalValue?: PlotJson
+        originalValue?: PlotJson,
+        track?: Track
     ) {
         this._coordinates = coordinates
         this._altitude = altitude
@@ -31,6 +34,7 @@ export class Plot {
         this._distance = distance
         this._time = time
         this._originalValue = originalValue
+        this._track = track
     }
 
     public get coordinates(): Coordinate {
@@ -84,11 +88,20 @@ export class Plot {
     public get originalValue(): PlotJson | undefined {
         return this._originalValue
     }
+
     public set originalValue(value: PlotJson | undefined) {
         this._originalValue = value
     }
 
-    static fromJson(json: PlotJson): Plot {
+    public get track(): Track | undefined {
+        return this._track
+    }
+
+    public set track(value: Track | undefined) {
+        this._track = value
+    }
+
+    static fromJson(json: PlotJson, parent: Track): Plot {
         throw new Error('Not implemented yet')
     }
 }
