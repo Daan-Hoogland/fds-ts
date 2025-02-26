@@ -1,6 +1,6 @@
 export enum CoordinateUnit {
     RD = 'RD',
-    WGS84 = 'WGS84',
+    WGS84 = 'WGS84_DEG',
     WGS84_MINUTES = 'WGS84_MINUTES',
     WGS84_SECONDS = 'WGS84_SECONDS',
     WEB_MERCATOR = 'WEB_MERCATOR',
@@ -10,6 +10,7 @@ export enum CoordinateUnit {
 
 export const getCoordinateUnit = (unit: string) => {
     unit = unit.toUpperCase()
-    const disEnum = CoordinateUnit[unit as keyof typeof CoordinateUnit]
-    return disEnum ? disEnum : CoordinateUnit.UNKNOWN
+    let coordEnum = CoordinateUnit[unit as keyof typeof CoordinateUnit]
+    if (!coordEnum) coordEnum = Object.values(CoordinateUnit).find((u) => u === unit) as CoordinateUnit
+    return coordEnum ? coordEnum : CoordinateUnit.UNKNOWN
 }

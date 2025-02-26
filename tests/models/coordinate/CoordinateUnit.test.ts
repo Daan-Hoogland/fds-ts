@@ -25,6 +25,10 @@ describe('CoordinateUnit enum', () => {
         const epsg3857String = 'EPSG3857'
         expect(getCoordinateUnit(epsg3857String)).toBe(CoordinateUnit.EPSG3857)
     })
+        it('should return the right enum value for the input string WGS84_DEG', () => {
+            const wgs84DegString = 'WGS84_DEG'
+            expect(getCoordinateUnit(wgs84DegString)).toBe(CoordinateUnit.WGS84)
+        })
     it('should correctly return UNKNOWN when fed an invalid heading value', () => {
         const inputString = 'INVALID VALUE'
         const coordinateEnum = getCoordinateUnit(inputString)
