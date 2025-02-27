@@ -1,5 +1,6 @@
 import { CoordinateUnit } from '../coordinates/ECoordinateUnit'
 import { Distance } from '../distance/Distance'
+import { Flight } from '../flight/Flight'
 import { Plot } from '../plot/Plot'
 import { TrackJson } from './TrackJson'
 
@@ -10,6 +11,7 @@ export class Track {
     private _start: Date
     private _plots: Plot[] = []
     private _originalValue?: TrackJson | undefined
+    private _flight: Flight
 
     constructor(
         id: number,
@@ -17,6 +19,7 @@ export class Track {
         coordUnit: CoordinateUnit,
         start: Date,
         plots: Plot[],
+        flight: Flight,
         originalValue?: TrackJson
     ) {
         this._id = id
@@ -25,6 +28,7 @@ export class Track {
         this._start = start
         this._plots = plots
         this._originalValue = originalValue
+        this._flight = flight
     }
 
     public get id(): number {
@@ -73,5 +77,17 @@ export class Track {
 
     public set originalValue(value: TrackJson | undefined) {
         this._originalValue = value
+    }
+
+    public get flight(): Flight {
+        return this._flight
+    }
+
+    public set flight(value: Flight) {
+        this._flight = value
+    }
+
+    static fromJson(json: TrackJson, flight: Flight) {
+        throw new Error('Not implemented yet')
     }
 }

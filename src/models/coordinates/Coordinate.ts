@@ -194,7 +194,7 @@ export class Coordinate {
         let xValue: string | number = xString,
             yValue: string | number = yString,
             includesUnit: boolean = false
-        let coordinateUnit = 'WGS84'
+        let coordinateUnit = 'WGS84_DEG'
         if (xString.includes(';')) {
             includesUnit = true
             const stringParts = xString.split(';')
