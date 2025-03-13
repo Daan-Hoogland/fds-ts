@@ -1,2 +1,3 @@
 - [ ] Add option to create Coordinate from array
 - [ ] Add support to create Coordinate from WGS84 minutes/second
+- [ ] Add duration class

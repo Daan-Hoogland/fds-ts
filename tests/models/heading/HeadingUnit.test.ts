@@ -1,6 +1,6 @@
 import { HeadingUnit, getHeadingUnit } from '../../../src/models/heading/EHeadingUnit'
 
-describe('SpeedUnit enum', () => {
+describe('HeadingUnit enum', () => {
     it('should return the right enum value for the input string RADIAN', () => {
         const radianString = 'RADIAN'
         expect(getHeadingUnit(radianString)).toBe(HeadingUnit.RADIAN)
