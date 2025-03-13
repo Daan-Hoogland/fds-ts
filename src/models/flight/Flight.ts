@@ -1,6 +1,7 @@
 import { Airport } from '../airport/Airport'
 import { OrganizationValue } from '../organization/OrganizationValue'
 import { Runway } from '../runway/Runway'
+import { Track } from '../track/Track'
 import { FlightJson } from './FlightJson'
 
 export class Flight {
@@ -19,6 +20,7 @@ export class Flight {
     private _qnh: number
     private _company: string
     private _flightPlan: string
+    private _tracks: Track | undefined
     private _originalValue?: FlightJson | undefined
 
     constructor(
@@ -37,6 +39,7 @@ export class Flight {
         qnh: number,
         company: string,
         flightPlan: string,
+        tracks?: Track,
         originalValue?: FlightJson
     ) {
         this._id = id
@@ -54,6 +57,7 @@ export class Flight {
         this._qnh = qnh
         this._company = company
         this._flightPlan = flightPlan
+        this._tracks = tracks
         this._originalValue = originalValue
     }
 
@@ -175,6 +179,14 @@ export class Flight {
 
     public set flightPlan(value: string) {
         this._flightPlan = value
+    }
+
+    public get tracks(): Track | undefined {
+        return this._tracks
+    }
+
+    public set tracks(value: Track | undefined) {
+        this._tracks = value
     }
 
     public get originalValue(): FlightJson | undefined {
